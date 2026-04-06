@@ -1,0 +1,14 @@
+{
+  "name": "My Book Library",
+  "short_name": "BookAI",
+  "description": "AI-generated book summaries — read anywhere, remember everything",
+  "start_url": "/book-ai/",
+  "scope": "/book-ai/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1e1b4b",
+  "theme_color": "#1e1b4b",
+  "icons": [
+    { "src": "/book-ai/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

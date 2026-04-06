@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Book Library</title>
+<link rel="manifest" href="/book-ai/manifest.json">
+<meta name="theme-color" content="#1e1b4b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BookAI">
+<link rel="apple-touch-icon" href="/book-ai/icon.svg">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #f8f7ff; color: #1a1a1a; min-height: 100vh; }
@@ -37,8 +43,8 @@
     <p>AI-generated summaries — open any book to read chapter by chapter</p>
     <div class="stats-bar">
       <div class="stat"><strong>1</strong><span>Book summarized</span></div>
-      <div class="stat"><strong>4</strong><span>Chapters done</span></div>
-      <div class="stat"><strong>~39 min</strong><span>Total reading time</span></div>
+      <div class="stat"><strong id="stat-total">0</strong><span>Chapters read</span></div>
+      <div class="stat"><strong id="stat-streak">0</strong><span>Day streak 🔥</span></div>
     </div>
   </div>
 </div>
@@ -65,5 +71,11 @@
   </div>
 </div>
 
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/book-ai/sw.js', { scope: '/book-ai/' });
+  }
+</script>
+<script src="shared.js"></script>
 </body>
 </html>
