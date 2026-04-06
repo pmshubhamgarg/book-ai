@@ -1,9 +1,10 @@
-const CACHE = 'book-ai-v2';
+const CACHE = 'book-ai-v3';
 
 const PRECACHE = [
   '/book-ai/',
   '/book-ai/index.html',
   '/book-ai/shared.js',
+  '/book-ai/shared.css',
   '/book-ai/manifest.json',
   '/book-ai/icon.svg',
   '/book-ai/outputs/hooked/index.html',

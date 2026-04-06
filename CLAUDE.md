@@ -27,6 +27,72 @@ Style every memory device as a callout box with a 💡 icon.
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🔍  REASONING JOURNEY  (preserve the author's thinking arc)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before writing any chapter, ask yourself: **"Does this chapter argue toward a conclusion, or just explain facts?"**
+
+- **Explanatory chapter** — the author presents ideas and evidence. Summarize normally.
+- **Argumentative chapter** — the author starts with a question, considers obvious answers, shows why each fails, then reveals the real insight. This is the dangerous one to summarize badly.
+
+## The Cold Shower Rule
+Never hand the reader the answer before making them feel why the obvious answers are wrong. The "aha" is earned, not given. Skipping to the conclusion is like telling someone the punchline before the joke — the learning evaporates.
+
+## For argumentative chapters: add "How the Author Got There"
+
+Add this section **immediately after THE BIG IDEA** (before Key Concepts). It's a visual flow card showing the intellectual path:
+
+```
+❌ What most people assume  →  Why that's wrong
+❌ The next obvious guess   →  Why that's wrong too
+✓  The real insight         →  Why this one actually holds
+```
+
+HTML structure:
+```html
+<div style="background:#fff7ed; border-left:4px solid #f97316; border-radius:0 10px 10px 0; padding:20px 24px; margin-bottom:32px;">
+  <div style="font-weight:700; color:#c2410c; font-size:0.9rem; text-transform:uppercase; letter-spacing:.05em; margin-bottom:16px;">🔍 How the Author Got There</div>
+  <div style="display:flex; flex-direction:column; gap:0;">
+    <!-- Each node: -->
+    <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid #fed7aa;">
+      <span style="font-size:1.2rem; flex-shrink:0;">❌</span>
+      <div><strong style="color:#c2410c;">Common assumption:</strong> [what people think] <br><span style="color:#6b7280; font-size:0.9rem;">Why it fails: [one clear reason]</span></div>
+    </div>
+    <!-- repeat for each wrong answer... -->
+    <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0;">
+      <span style="font-size:1.2rem; flex-shrink:0;">✅</span>
+      <div><strong style="color:#059669;">The real insight:</strong> [the conclusion the author arrives at]</div>
+    </div>
+  </div>
+</div>
+```
+
+Rules:
+- 3–5 nodes max. Don't pad it.
+- Keep each "Why it fails" to one sentence. Sharp, not thorough.
+- Skip this section entirely if the chapter is purely explanatory.
+- **In Key Concepts cards**: when a concept overturns a common belief, open with "Most people assume… but…" before stating the real idea. Make the reader feel the overturning.
+
+## The 6 ways a summary loses the soul of a chapter
+
+Before finalising any chapter, check every one of these:
+
+1. **Reasoning arc stripped** — you stated the conclusion without the journey. Fix: add "How the Author Got There."
+2. **Nuance flattened** — you turned "it depends on X" into an absolute rule. Fix: keep the caveat. The caveat IS part of the lesson.
+3. **Stories gutted** — you reduced a rich narrative to a bullet. Fix: a story must remain a story. The emotional arc is the evidence; strip it and the reader won't believe the lesson.
+4. **Sequence broken** — you presented Idea C before Idea A and B. Fix: match the order the author uses. Ideas are often introduced in sequence because each one builds on the last.
+5. **"So what" missing** — you explained what a concept is but not why the reader should care. Fix: every concept must land with "here's why this changes how you act."
+6. **Author's energy lost** — you translated a provocative, punchy author into bland Wikipedia prose. Fix: keep their voice. If they're blunt, be blunt. If they're urgent, be urgent.
+
+## The final test — run this before saving
+
+Read your summary as if you have never seen this chapter. Ask yourself:
+*"Do I come away with the same insights, same caveats, same 'aha moments' as someone who read the actual pages?"*
+
+If anything is missing — go back. The goal is a complete replacement, not a shortcut.
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📥  INPUT — CHAPTER DETECTION  (Step 1)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -56,6 +122,10 @@ For each requested chapter, produce a complete self-contained HTML document. Sav
 1. HEADER — book title (small/muted), chapter number + title (large/bold), badge, reading time (~200 wpm)
 
 2. THE BIG IDEA — 2-3 plain-English sentences. Card with left indigo border. No jargon.
+
+2b. THE REASONING JOURNEY — (only for argumentative chapters — see Reasoning Journey section above)
+    Show the intellectual path: ❌ Wrong assumption → Why it fails → ❌ Next guess → Why it fails → ✅ Real insight
+    Orange/amber theme. 3–5 nodes. Skip if the chapter is purely explanatory.
 
 3. KEY CONCEPTS — one card per concept containing:
    a) Concept name (bold, indigo)
@@ -163,6 +233,9 @@ This ensures new chapters work offline for everyone after their next visit.
 ║  ✓ Index files updated                               ║
 ║  ✓ sw.js CACHE version bumped                        ║
 ║  ✓ Meta-summary written                              ║
+║  ✓ Argumentation arc preserved (not jumped to end)   ║
+║  ✓ Soul check passed — same insight as reading real  ║
+║    chapter (nuance, stories, sequence, so-what)      ║
 ╚══════════════════════════════════════════════════════╝
 
 Mark each ✓ DONE or ✗ MISSED with a short note.
@@ -177,3 +250,6 @@ Mark each ✓ DONE or ✗ MISSED with a short note.
 - Diagrams only when they genuinely help understanding
 - No repetition of the same idea across sections
 - Vivid and specific always beats long and thorough
+- NEVER skip "why wrong answers are wrong" — that tension IS the lesson, not the conclusion
+- Focus on content depth over styling variety — a well-explained concept beats a pretty card with shallow text
+- All shared styles live in shared.css. Chapter files use `<link rel="stylesheet" href="../../shared.css">` and keep only a small `<style>` block for page-specific diagram layouts. Never re-declare base styles inline.
