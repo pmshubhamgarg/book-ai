@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked — Chapter 5: Investment</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  /* Chapter 5 — diagram-specific styles */
+  .hook-loop { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0; margin: 8px 0; }
+  .hook-step { text-align: center; padding: 16px 20px; font-size: 0.9rem; font-weight: 700; color: #fff; flex: 1; min-width: 120px; }
+  .hook-arrow { font-size: 1.4rem; color: #a5b4fc; align-self: center; padding: 0 4px; }
+  .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .value-cell { background: #fff; border: 1px solid #e0e7ff; border-radius: 8px; padding: 14px 16px; font-size: 0.9rem; }
+  .value-cell strong { display: block; color: #4f46e5; margin-bottom: 4px; font-size: 0.95rem; }
+  .ratchet { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .ratchet-step { padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; color: #fff; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <strong>Hooked</strong>
+  <span>|</span>
+  <span>Chapter 5 of 5</span>
+  <span>|</span>
+  <span class="badge badge-practical">Practical</span>
+</nav>
+
+<div class="wrap">
+
+  <div class="book-label">Hooked — Nir Eyal</div>
+  <h1>Chapter 5: Investment</h1>
+  <div class="meta">
+    <span class="badge badge-practical">Practical</span>
+    <span class="reading-time">⏱ ~9 min read</span>
+  </div>
+
+  <h2>The Big Idea</h2>
+  <div class="big-idea">
+    The final phase of the Hook isn't about getting a reward — it's about doing a small bit of work <em>after</em> the reward. When users invest effort, they store value inside the product: content they've created, data the algorithm has learned about them, followers they've built up, reputation they've earned. This stored value makes the product better on every future visit. And crucially, it can't be taken to a competitor. The investment is what turns a one-time user into a long-term habit.
+  </div>
+
+  <!-- REASONING JOURNEY — this chapter argues toward a key insight -->
+  <div class="reasoning-journey">
+    <div class="reasoning-journey-title">🔍 How the Author Got There</div>
+    <div>
+      <div class="reasoning-node">
+        <span class="reasoning-icon">❌</span>
+        <div class="reasoning-wrong">
+          <strong>Common assumption: Products retain users by making it hard to leave.</strong>
+          <span class="why">Why it fails: That's hostility, not habit. Users resent feeling trapped and leave the moment a better product appears.</span>
+        </div>
+      </div>
+      <div class="reasoning-node">
+        <span class="reasoning-icon">❌</span>
+        <div class="reasoning-wrong">
+          <strong>Next guess: Just make the reward so good they keep coming back for it.</strong>
+          <span class="why">Why it fails: A competitor with a better reward wins every time. Pure reward is a race to the bottom.</span>
+        </div>
+      </div>
+      <div class="reasoning-node">
+        <span class="reasoning-icon">❌</span>
+        <div class="reasoning-wrong">
+          <strong>Third guess: Ask users to invest upfront — more skin in the game.</strong>
+          <span class="why">Why it fails: Effort before reward feels like work, not value. Users abandon the product before the habit forms.</span>
+        </div>
+      </div>
+      <div class="reasoning-node" style="border-bottom:none;">
+        <span class="reasoning-icon">✅</span>
+        <div class="reasoning-right">
+          <strong>The real insight: Ask for small investment AFTER the reward, and make sure that investment improves their next experience.</strong>
+          <span style="color:#374151; font-size:0.9rem; display:block; margin-top:4px;">Users invest willingly because they get something back — a product that knows them better, a social graph that belongs to them, a reputation they've earned. The moat grows from the inside out.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <div class="concept-name">Investment Is Not About Now — It's About Next Time</div>
+    <p>Investment is effort the user puts in <em>after</em> receiving a reward. It doesn't pay off immediately. It loads two things for the future: stored value (the product improves) and the next trigger (a reason to return). This is what separates the Investment phase from just "more friction."</p>
+    <p style="margin-top:10px;">The timing is critical. The ask must come right after a reward — users are in a primed state. Ask too early (before the reward), and it feels like work. Ask too late, and the moment has passed.</p>
+    <div class="analogy">Think of it like: leaving a better bookmark. You don't get rewarded for putting the bookmark in, but next time you open the book you start exactly where you need to be — and the reading is better for it.</div>
+    <div class="example">In practice: Twitter asks new users to follow 5 accounts before leaving. The user gets no immediate reward for following. But their next visit has a personalised feed — the investment just paid off.</div>
+    <div class="memory-hook">💡 Investment is planting seeds, not harvesting them. You never water seeds and expect fruit the same day.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The IKEA Effect — Effort Creates Attachment</div>
+    <p>Most people assume we value things because they're high quality. But research shows we value things because we helped create them — regardless of quality. This is the IKEA Effect: furniture you assembled yourself feels more valuable than identical pre-assembled furniture, even when it looks exactly the same.</p>
+    <p style="margin-top:10px;">The implication for product design is powerful. When users build something inside your product — a playlist, a profile, a portfolio — they've transferred emotional ownership to it. Leaving means abandoning something they made.</p>
+    <div class="analogy">Think of it like: a sandcastle you built vs. one someone else built. You'll check yours more, protect it more, and feel worse when the tide takes it.</div>
+    <div class="example">In practice: Fantasy sports leagues. Users spend hours drafting teams, making waiver moves, managing lineups — for a team that doesn't physically exist. The effort makes it feel real. Deeply real.</div>
+    <div class="memory-hook">💡 Labor = Love. The more someone does, the more they value what they made. Effort is not a barrier — it's a bonding agent.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The Five Forms of Stored Value</div>
+    <p>Not all investment is equal. Eyal identifies five types of stored value that products can accumulate. The more personal and non-transferable the value, the stronger the habit moat.</p>
+    <div class="value-grid">
+      <div class="value-cell"><strong>Content</strong>Pins, notes, posts, photos you've created. Your Evernote notebooks, your Pinterest boards. Pure you.</div>
+      <div class="value-cell"><strong>Data</strong>Preferences, listening history, tagged emails. Spotify's Discover Weekly gets better because it's been watching you for years.</div>
+      <div class="value-cell"><strong>Followers</strong>A social graph you built one connection at a time. Moving to a new platform means starting from zero.</div>
+      <div class="value-cell"><strong>Reputation</strong>eBay seller rating, Stack Overflow score, Airbnb host reviews. Years of behaviour compressed into a number — and it lives here, not there.</div>
+      <div class="value-cell" style="grid-column: span 2;"><strong>Skill</strong>Proficiency that only works in this product. A Photoshop expert doesn't want to relearn everything in a new tool. A veteran gamer doesn't want to restart their character.</div>
+    </div>
+    <div class="memory-hook">💡 CDFRS — Content, Data, Followers, Reputation, Skill. Any product that builds even one of these is building a moat that grows with every use.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">Loading the Next Trigger</div>
+    <p>Every investment action should do double duty: store value AND plant the seed of the next hook cycle. If the investment doesn't bring the user back, it's just friction with extra steps.</p>
+    <div class="analogy">Think of it like: sending a letter. Writing the letter is effort (investment). But sending it creates the expectation of a reply — which is the trigger that brings you back to the mailbox.</div>
+    <div class="example">In practice: Sending an email is an investment. The moment you hit send, you've loaded a trigger — you'll check back to see if they replied. The act of investing created the next reason to return.</div>
+    <div class="example">In practice: Following someone on Twitter is investment. Their next tweet is a trigger that lands directly in your feed. You created the trigger yourself.</div>
+    <div class="memory-hook">💡 Investment is the last step that sets up the first step of the next cycle. If your investment doesn't point back to a trigger, redesign it.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">Stored Value vs. Switching Costs — A Critical Distinction</div>
+    <p>Most people assume stored value and switching costs are the same thing — both keep users from leaving. But they're completely different in how users feel about them.</p>
+    <p style="margin-top:10px;"><strong>Switching costs</strong> are punishments. The product makes leaving painful — your data is locked, your files can't be exported, the process is deliberately hard. Users resent this and leave as soon as a strong-enough alternative appears.</p>
+    <p style="margin-top:10px;"><strong>Stored value</strong> is a reward. The product gets genuinely better as you use it. Your Spotify Discover Weekly is better than anyone else's because it's uniquely yours. Users don't want to leave because their next experience here is better than their first experience anywhere else.</p>
+    <div class="memory-hook">💡 Switching costs create resentful prisoners. Stored value creates loyal residents. One is a cage, the other is a garden. Design the garden.</div>
+  </div>
+
+  <h2>Stories & Case Studies</h2>
+
+  <div class="story-card">
+    <strong>Snapchat Streaks: The Simplest Investment Imaginable</strong>
+    <p>A Snapchat streak is just a number — a count of consecutive days two people have exchanged snaps. There is no inherent value in the number. But Snapchat users describe losing a 200-day streak as genuinely upsetting, sometimes heartbreaking. Snap even introduced "Streak Freeze" — a paid feature that lets you protect your streak if you miss a day — because the anxiety of losing streaks was so intense it was driving churn. The streak is stored value in its purest form: personalised, visible, impossible to transfer, and emotionally loaded far beyond its functional worth. Snap didn't engineer loyalty — they engineered loss aversion. The investment is microscopic (one snap per day), but the accumulated value feels enormous.</p>
+  </div>
+
+  <div class="story-card">
+    <strong>LinkedIn's Profile Completion Bar: Investment Dressed as Progress</strong>
+    <p>LinkedIn shows every user a "Profile Strength" meter — Beginner, Intermediate, Expert, All-Star. It's almost always incomplete. Each gap (no headline, no summary, missing skills) is a small investment invitation. The genius is that every piece of information users add — their work history, their recommendations, their skills endorsements — is both stored value (their professional identity, years in the making) and a trigger loader (recruiter views, connection suggestions, "People Also Viewed" traffic). A complete LinkedIn profile cannot be recreated in an afternoon elsewhere. The investment is deep, personal, and cumulative. No rival professional network has ever successfully lured users away en masse, not because LinkedIn's features are superior, but because what users have built there belongs to them in a way nothing can replicate.</p>
+  </div>
+
+  <h2>Visual Breakdown</h2>
+  <div class="diagram-box">
+    <div class="diagram-title">The Complete Hook Model — One Full Loop</div>
+    <div class="hook-loop">
+      <div class="hook-step" style="background:#6366f1; border-radius:10px 0 0 10px;">🔔 Trigger<br><span style="font-size:0.78rem; font-weight:400;">External → Internal</span></div>
+      <div class="hook-arrow">→</div>
+      <div class="hook-step" style="background:#7c3aed;">⚡ Action<br><span style="font-size:0.78rem; font-weight:400;">Simplest behaviour</span></div>
+      <div class="hook-arrow">→</div>
+      <div class="hook-step" style="background:#4f46e5;">🎰 Variable Reward<br><span style="font-size:0.78rem; font-weight:400;">Unpredictable payoff</span></div>
+      <div class="hook-arrow">→</div>
+      <div class="hook-step" style="background:#059669; border-radius:0 10px 10px 0;">🌱 Investment<br><span style="font-size:0.78rem; font-weight:400;">Stores value + loads trigger</span></div>
+    </div>
+    <p style="text-align:center; font-size:0.85rem; color:#6b7280; margin-top:12px;">↩ Investment loads the next Trigger → the loop repeats → stored value grows with each cycle</p>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">The Ratchet — How Each Loop Makes the Habit Stronger</div>
+    <div class="ratchet">
+      <div class="ratchet-step" style="background:#e0e7ff; color:#3730a3;">Loop 1 — User tries the product. Invests a little. Product improves slightly.</div>
+      <div class="ratchet-step" style="background:#c7d2fe; color:#3730a3;">Loop 2 — Better experience. More investment. Stored value accumulates.</div>
+      <div class="ratchet-step" style="background:#a5b4fc; color:#fff;">Loop 3 — Product feels personal. Leaving means losing what they built.</div>
+      <div class="ratchet-step" style="background:#4f46e5; color:#fff;">Loop N — The product uniquely fits this user. No alternative can match it on day one. Habit is locked in.</div>
+    </div>
+  </div>
+
+  <h2>Chapter Takeaways</h2>
+  <ul class="takeaways">
+    <li>Place your investment ask immediately after the reward moment — that's when users are most willing to put in effort.</li>
+    <li>Keep the ask tiny. A big investment before the habit is formed feels like work. One follow, one setting, one short action.</li>
+    <li>Map which of the five stored value types (CDFRS) your product builds. If the answer is none, design for at least one this sprint.</li>
+    <li>Every investment action should load a trigger. If users invest but have no clear reason to return, the loop is broken.</li>
+    <li>Stop designing switching costs. Design stored value instead — users who stay because leaving feels wasteful will leave. Users who stay because their experience is uniquely theirs will stay forever.</li>
+  </ul>
+
+  <h2>Apply This Week</h2>
+  <div class="action-box">
+    <p>▶ <strong>Action 1:</strong> Walk your product's core flow. Find the moment the user receives their main reward. Now look at what happens in the 30 seconds after. Is there an investment ask? If not, add one — a follow, a save, a preference, a piece of content. It must be frictionless and it must make their next visit better.</p>
+    <p>▶ <strong>Action 2:</strong> List every piece of stored value your product currently holds for a power user. Then ask: is any of it transferable to a competitor in under 5 minutes? If yes, that's not real stored value — it's just data. Find the one thing only your product accumulates and double down on it.</p>
+  </div>
+
+</div>
+
+<!-- QUIZ -->
+<div style="max-width:820px;margin:0 auto;padding:0 24px 64px;">
+  <h2 style="font-size:1.2rem;font-weight:700;color:#1a1a1a;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #f3f4f6;">🃏 Test Yourself</h2>
+  <div class="quiz-section" style="background:#f8f7ff;border:1px solid #c7d2fe;border-radius:12px;padding:24px;">
+    <script type="application/json" id="quiz-data">
+[
+  {"q":"Why must the investment ask come AFTER the variable reward, not before?","options":["Users have more time after receiving a reward","The reward primes users — they're in a receptive, dopamine-enriched state willing to put in small effort","Triggers fire more reliably after rewards","The product works better in that sequence technically"],"answer":1},
+  {"q":"What is the IKEA Effect?","options":["Products feel cheaper when self-assembled","People place disproportionately high value on things they helped create, regardless of objective quality","Complexity signals quality to consumers","Familiarity reduces the urge to switch products"],"answer":1},
+  {"q":"Which of the following is NOT one of Eyal's five forms of stored value?","options":["Content","Followers","Revenue","Reputation"],"answer":2},
+  {"q":"What does it mean for investment to 'load the next trigger'?","options":["It sends a push notification after the user acts","It trains users to expect a reward on their next visit","The investment creates conditions — like following someone — that bring the user back naturally","It locks users into a subscription"],"answer":2},
+  {"q":"What is the key difference between stored value and traditional switching costs?","options":["Stored value is free; switching costs are paid for","Stored value makes the product genuinely better for the user; switching costs just make leaving painful","Stored value is temporary; switching costs are permanent","They are effectively the same — both prevent users from leaving"],"answer":1}
+]
+    </script>
+    <div id="quiz-container"></div>
+  </div>
+</div>
+
+<script src="../../shared.js"></script>
+</body>
+</html>

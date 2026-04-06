@@ -1,4 +1,4 @@
-const CACHE = 'book-ai-v3';
+const CACHE = 'book-ai-v4';
 
 const PRECACHE = [
   '/book-ai/',
@@ -12,6 +12,7 @@ const PRECACHE = [
   '/book-ai/outputs/hooked/ch02-trigger.html',
   '/book-ai/outputs/hooked/ch03-action.html',
   '/book-ai/outputs/hooked/ch04-variable-reward.html',
+  '/book-ai/outputs/hooked/ch05-investment.html',
   '/book-ai/outputs/hooked/meta-summary.html',
 ];
 
