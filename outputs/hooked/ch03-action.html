@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked — Chapter 3: Action</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #1a1a1a; line-height: 1.7; }
+  .nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 12px 24px; display: flex; gap: 16px; align-items: center; z-index: 100; font-size: 14px; color: #6b7280; }
+  .nav strong { color: #1a1a1a; }
+  .badge { padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; color: #fff; }
+  .badge-practical { background: #059669; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+  .book-label { font-size: 13px; color: #9ca3af; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  h1 { font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 12px; }
+  .meta { display: flex; gap: 12px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+  .reading-time { font-size: 13px; color: #9ca3af; }
+  h2 { font-size: 1.2rem; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  .big-idea { background: #f8f7ff; border-left: 4px solid #4f46e5; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 32px; font-size: 1.05rem; }
+  .concept-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .concept-name { font-weight: 700; color: #4f46e5; font-size: 1.05rem; margin-bottom: 10px; }
+  .analogy { background: #eff6ff; border-left: 3px solid #3b82f6; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; }
+  .example { background: #f0fdf4; border-left: 3px solid #22c55e; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; }
+  .memory-hook { background: #fefce8; border: 1px dashed #eab308; border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: #713f12; }
+  .story-card { background: #fff7ed; border-left: 4px solid #f97316; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 20px; }
+  .diagram-box { background: #f8f7ff; border: 1px solid #c7d2fe; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .diagram-title { font-weight: 700; color: #4f46e5; margin-bottom: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: .05em; }
+  .mat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; border-radius: 10px; overflow: hidden; }
+  .mat-cell { padding: 18px; text-align: center; font-size: 0.9rem; }
+  .mat-cell h4 { font-size: 1rem; margin-bottom: 6px; }
+  .simplicity-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+  .simplicity-item { background: #fff; border: 1px solid #e0e7ff; border-radius: 8px; padding: 12px 14px; font-size: 0.9rem; }
+  .simplicity-item strong { display: block; color: #4f46e5; margin-bottom: 4px; }
+  .heuristic-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 10px; }
+  .heuristic-card h4 { color: #4f46e5; margin-bottom: 6px; font-size: 0.95rem; }
+  .takeaways { list-style: none; }
+  .takeaways li { padding: 10px 0 10px 32px; position: relative; border-bottom: 1px solid #f3f4f6; font-size: 0.97rem; }
+  .takeaways li::before { content: "✓"; position: absolute; left: 0; color: #4f46e5; font-weight: 700; font-size: 1.1rem; }
+  .action-box { background: #f8f7ff; border: 2px solid #4f46e5; border-radius: 10px; padding: 24px; margin-top: 8px; }
+  .action-box p { margin-bottom: 10px; font-size: 0.97rem; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <strong>Hooked</strong>
+  <span>|</span>
+  <span>Chapter 3 of 4</span>
+  <span>|</span>
+  <span class="badge badge-practical">Practical</span>
+</nav>
+
+<div class="wrap">
+
+  <div class="book-label">Hooked — Nir Eyal</div>
+  <h1>Chapter 3: Action</h1>
+  <div class="meta">
+    <span class="badge badge-practical">Practical</span>
+    <span class="reading-time">⏱ ~9 min read</span>
+  </div>
+
+  <h2>The Big Idea</h2>
+  <div class="big-idea">
+    A trigger is useless if the user doesn't act on it. The Action phase is about making the desired behavior as effortless as possible. Dr. BJ Fogg's formula — B = MAT (Behavior = Motivation × Ability × Trigger) — tells us that all three must be present simultaneously. But the biggest lever for most products isn't motivation; it's <em>ability</em>. Removing friction is almost always more effective than increasing desire.
+  </div>
+
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <div class="concept-name">The Fogg Behavior Model: B = MAT</div>
+    <p>Any behavior requires three things firing at the same moment: a <strong>Trigger</strong> (covered in Ch. 2), sufficient <strong>Motivation</strong>, and sufficient <strong>Ability</strong>. If any one is missing, the behavior won't occur — no matter how strong the other two are.</p>
+    <div class="analogy">Think of it like: a car engine. You need fuel (motivation), a working engine (ability), and a key turn (trigger). A full tank means nothing if the engine is seized.</div>
+    <div class="example">In practice: Your phone rings. You don't answer because (a) it's buried in your bag — low ability, or (b) you think it's spam — low motivation, or (c) it's on silent — no trigger. Same outcome, three different root causes.</div>
+    <div class="memory-hook">💡 When users don't act, diagnose which leg of MAT is broken before trying to fix anything.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The 3 Core Motivators</div>
+    <p>Fogg identifies three fundamental levers of human motivation, each with a positive and negative side:</p>
+    <ul style="margin: 12px 0 0 20px; font-size:0.95rem;">
+      <li style="margin-bottom:6px;"><strong>Seek pleasure / avoid pain</strong></li>
+      <li style="margin-bottom:6px;"><strong>Seek hope / avoid fear</strong></li>
+      <li><strong>Seek social acceptance / avoid rejection</strong></li>
+    </ul>
+    <div class="example">In practice: Obama's 2008 "Hope" poster activated the hope motivator. Motorcycle helmet ads showing head injuries activate fear. Budweiser ads showing friends together activate social acceptance.</div>
+    <div class="memory-hook">💡 Motivation is expensive to change. Ability is cheap to improve. Always start with ability.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The 6 Elements of Simplicity (Ability)</div>
+    <p>Fogg's six factors that make an action easy or hard. For any given user at any given moment, one of these is the bottleneck. Find it and remove it.</p>
+    <div class="simplicity-list">
+      <div class="simplicity-item"><strong>Time</strong>How long the action takes</div>
+      <div class="simplicity-item"><strong>Money</strong>Financial cost to the user</div>
+      <div class="simplicity-item"><strong>Physical Effort</strong>Body labor required</div>
+      <div class="simplicity-item"><strong>Brain Cycles</strong>Mental effort and focus needed</div>
+      <div class="simplicity-item"><strong>Social Deviance</strong>How normal the behavior feels</div>
+      <div class="simplicity-item"><strong>Non-Routine</strong>How much it disrupts existing habits</div>
+    </div>
+    <div class="analogy" style="margin-top:14px;">Think of it like: a garden hose with a kink. The water pressure (motivation) is fine — you just need to find and straighten the kink (the limiting simplicity factor).</div>
+    <div class="memory-hook">💡 Ask: "What is the one thing making this action hardest for my user right now?" Fix that one thing. Don't add features — remove friction.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">Cognitive Heuristics (Brain Shortcuts)</div>
+    <p>Humans make dozens of snap decisions daily using mental shortcuts — heuristics. Product designers can leverage these to boost perceived motivation or ability without changing the product's actual functionality.</p>
+    <div style="margin-top: 14px;">
+      <div class="heuristic-card">
+        <h4>Scarcity Effect</h4>
+        <p style="font-size:0.9rem;">Items perceived as scarce are valued more highly. Amazon's "Only 3 left in stock" nudges purchase decisions even when inventory is abundant.</p>
+      </div>
+      <div class="heuristic-card">
+        <h4>Framing Effect</h4>
+        <p style="font-size:0.9rem;">Context changes perception. Joshua Bell playing violin in a subway station got ignored; the same music in Carnegie Hall earns $200 tickets. Frame your product in the right context.</p>
+      </div>
+      <div class="heuristic-card">
+        <h4>Anchoring Effect</h4>
+        <p style="font-size:0.9rem;">The first number seen becomes a reference point. "30% off" anchors on the original price — even if an un-discounted alternative is actually cheaper.</p>
+      </div>
+      <div class="heuristic-card">
+        <h4>Endowed Progress Effect</h4>
+        <p style="font-size:0.9rem;">People work harder toward a goal they feel they've already started. Car-wash punch cards pre-stamped with 2 free punches had 82% higher completion than blank cards requiring the same 8 purchases.</p>
+      </div>
+    </div>
+    <div class="memory-hook">💡 LinkedIn's profile completion bar is pre-loaded with some progress. You're not starting from zero — you're already partway there. Pure psychology, zero engineering cost.</div>
+  </div>
+
+  <h2>Stories & Case Studies</h2>
+
+  <div class="story-card">
+    <strong>Twitter's Homepage Evolution: From Chaos to Clarity</strong>
+    <p>In 2009, Twitter's homepage was a wall of text, links, and explanations — high brain cycles required. User growth stalled. The company iterated relentlessly, asking: what is our users' scarcest resource? By 2012, the homepage had been stripped to two words and two buttons: Sign In / Sign Up. The product description was exactly 140 characters. A single evocative image replaced paragraphs of explanation. Twitter had discovered that no amount of persuasion text converted better than simply making the first action frictionless. The lesson: motivation is what users arrive with. Ability is what you give them.</p>
+  </div>
+
+  <div class="story-card">
+    <strong>The Infinite Scroll: Pinterest Removes the Page Break</strong>
+    <p>Before infinite scroll, every website required users to click "next page" and wait for a reload — a tiny but real friction point that interrupted the browsing flow and gave users a natural exit. Pinterest eliminated that pause entirely. As a user nears the bottom, new content loads automatically, and partially visible images at the edge of the screen create just enough curiosity to keep scrolling. The action of consuming content was reduced to a single effortless gesture repeated indefinitely. One small friction removed; engagement multiplied dramatically.</p>
+  </div>
+
+  <h2>Visual Breakdown</h2>
+  <div class="diagram-box">
+    <div class="diagram-title">B = MAT — The Fogg Behavior Model</div>
+    <div class="mat-grid">
+      <div class="mat-cell" style="background:#4f46e5; color:#fff;">
+        <h4>Motivation</h4>
+        <p style="font-size:0.85rem;">Desire to act<br>— Pleasure/Pain<br>— Hope/Fear<br>— Acceptance/Rejection</p>
+      </div>
+      <div class="mat-cell" style="background:#7c3aed; color:#fff;">
+        <h4>Ability</h4>
+        <p style="font-size:0.85rem;">Ease of action<br>— Time<br>— Money<br>— Brain cycles<br>— Physical effort</p>
+      </div>
+      <div class="mat-cell" style="background:#6366f1; color:#fff;">
+        <h4>Trigger</h4>
+        <p style="font-size:0.85rem;">The cue to act<br>— External<br>— Internal<br>(from Ch. 2)</p>
+      </div>
+    </div>
+    <p style="margin-top: 14px; font-size: 0.9rem; color: #6b7280; text-align:center;">All three must be present simultaneously for behavior to occur. Missing one = no action.</p>
+  </div>
+
+  <h2>Chapter Takeaways</h2>
+  <ul class="takeaways">
+    <li>Start with ability, not motivation — reducing friction is faster and cheaper than increasing desire.</li>
+    <li>Map every step from trigger to reward and eliminate any that aren't strictly necessary.</li>
+    <li>Identify which of the 6 simplicity factors is your users' biggest bottleneck right now and fix only that.</li>
+    <li>Use the endowed progress effect: give users a head-start on any goal to increase completion rates.</li>
+    <li>Frame your product in contexts that elevate its perceived value — environment shapes perception as much as quality does.</li>
+  </ul>
+
+  <h2>Apply This Week</h2>
+  <div class="action-box">
+    <p>▶ <strong>Action 1:</strong> Walk the full path from your product's trigger to its first reward. Count every tap, click, field, and decision. Then cut at least two steps. If you can't cut them, ask why they exist.</p>
+    <p>▶ <strong>Action 2:</strong> Pick one heuristic (scarcity, framing, anchoring, or endowed progress) and design one small experiment to apply it to your onboarding flow this week. Measure whether it changes the first key action rate.</p>
+  </div>
+
+</div>
+</body>
+</html>

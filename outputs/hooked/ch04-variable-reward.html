@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked — Chapter 4: Variable Reward</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #1a1a1a; line-height: 1.7; }
+  .nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 12px 24px; display: flex; gap: 16px; align-items: center; z-index: 100; font-size: 14px; color: #6b7280; }
+  .nav strong { color: #1a1a1a; }
+  .badge { padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; color: #fff; }
+  .badge-mixed { background: #d97706; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+  .book-label { font-size: 13px; color: #9ca3af; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  h1 { font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 12px; }
+  .meta { display: flex; gap: 12px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+  .reading-time { font-size: 13px; color: #9ca3af; }
+  h2 { font-size: 1.2rem; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  .big-idea { background: #f8f7ff; border-left: 4px solid #4f46e5; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 32px; font-size: 1.05rem; }
+  .concept-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .concept-name { font-weight: 700; color: #4f46e5; font-size: 1.05rem; margin-bottom: 10px; }
+  .analogy { background: #eff6ff; border-left: 3px solid #3b82f6; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; }
+  .example { background: #f0fdf4; border-left: 3px solid #22c55e; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; }
+  .memory-hook { background: #fefce8; border: 1px dashed #eab308; border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: #713f12; }
+  .story-card { background: #fff7ed; border-left: 4px solid #f97316; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 20px; }
+  .diagram-box { background: #f8f7ff; border: 1px solid #c7d2fe; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .diagram-title { font-weight: 700; color: #4f46e5; margin-bottom: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: .05em; }
+  .reward-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .reward-cell { border-radius: 10px; padding: 20px; text-align: center; }
+  .reward-cell h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .reward-cell p { font-size: 0.85rem; }
+  .reward-cell ul { font-size: 0.85rem; text-align: left; padding-left: 16px; margin-top: 8px; }
+  .reward-cell li { margin-bottom: 4px; }
+  .finite-infinite { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+  .fi-cell { border-radius: 8px; padding: 16px; font-size: 0.9rem; }
+  .fi-cell h4 { font-weight: 700; margin-bottom: 8px; }
+  .fi-cell ul { padding-left: 16px; }
+  .fi-cell li { margin-bottom: 4px; }
+  .takeaways { list-style: none; }
+  .takeaways li { padding: 10px 0 10px 32px; position: relative; border-bottom: 1px solid #f3f4f6; font-size: 0.97rem; }
+  .takeaways li::before { content: "✓"; position: absolute; left: 0; color: #4f46e5; font-weight: 700; font-size: 1.1rem; }
+  .action-box { background: #f8f7ff; border: 2px solid #4f46e5; border-radius: 10px; padding: 24px; margin-top: 8px; }
+  .action-box p { margin-bottom: 10px; font-size: 0.97rem; }
+  .warning-box { background: #fff1f2; border-left: 4px solid #f43f5e; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <strong>Hooked</strong>
+  <span>|</span>
+  <span>Chapter 4 of 4</span>
+  <span>|</span>
+  <span class="badge badge-mixed">Mixed</span>
+</nav>
+
+<div class="wrap">
+
+  <div class="book-label">Hooked — Nir Eyal</div>
+  <h1>Chapter 4: Variable Reward</h1>
+  <div class="meta">
+    <span class="badge badge-mixed">Mixed</span>
+    <span class="reading-time">⏱ ~11 min read</span>
+  </div>
+
+  <h2>The Big Idea</h2>
+  <div class="big-idea">
+    What keeps users coming back isn't the reward itself — it's the <em>anticipation</em> of an unpredictable reward. The nucleus accumbens, the brain's craving center, lights up most intensely not when a reward arrives, but in the uncertain moment before. Variable rewards create a focused, dopamine-driven state that suppresses rational thought and fuels compulsive engagement. But variability alone isn't enough — rewards must match users' real motivations, and autonomy must be preserved or users will revolt.
+  </div>
+
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <div class="concept-name">Why Variability Works: The Dopamine Loop</div>
+    <p>Olds and Milner's 1940s experiments showed that lab mice would forgo food and water to keep stimulating their nucleus accumbens. Later research by Stanford's Brian Knutson revealed the twist: that brain region activates most during <em>anticipation</em> of reward, not during the reward itself. It's the <em>wanting</em>, not the <em>getting</em>, that drives behavior.</p>
+    <div class="analogy">Think of it like: a slot machine. You don't keep pulling for the payout you already got — you pull because the next one <em>might</em> pay out. Certainty kills the craving; uncertainty feeds it.</div>
+    <div class="memory-hook">💡 Predictable = boring. Variable = compelling. The fridge light doesn't make you keep opening the fridge. A mystery treat inside would.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The 3 Types of Variable Rewards</div>
+    <p>All variable rewards fall into one of three categories based on what the user is seeking:</p>
+    <div style="margin-top: 14px;">
+      <div class="reward-grid">
+        <div class="reward-cell" style="background:#ede9fe; border: 1px solid #c4b5fd;">
+          <h4 style="color:#5b21b6;">🧑‍🤝‍🧑 Tribe</h4>
+          <p>Social validation — feeling accepted, important, attractive, included.</p>
+          <ul>
+            <li>Facebook Likes</li>
+            <li>Stack Overflow upvotes</li>
+            <li>League of Legends Honor Points</li>
+          </ul>
+        </div>
+        <div class="reward-cell" style="background:#fef3c7; border: 1px solid #fcd34d;">
+          <h4 style="color:#92400e;">🎯 Hunt</h4>
+          <p>Resources, information, bargains — the thrill of the chase.</p>
+          <ul>
+            <li>Slot machines</li>
+            <li>Twitter feed scrolling</li>
+            <li>Pinterest infinite scroll</li>
+          </ul>
+        </div>
+        <div class="reward-cell" style="background:#dcfce7; border: 1px solid #86efac;">
+          <h4 style="color:#166534;">🧠 Self</h4>
+          <p>Mastery, completion, competency — intrinsic satisfaction.</p>
+          <ul>
+            <li>Video game leveling up</li>
+            <li>Inbox zero in Mailbox</li>
+            <li>Codecademy lesson streaks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="memory-hook" style="margin-top:14px;">💡 Email hits all three: tribal (who needs me?), hunt (what news arrived?), self (clear the inbox). That's why it's the most habit-forming technology ever made.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">Finite vs. Infinite Variability</div>
+    <p>Not all variability lasts. Products with <strong>finite variability</strong> become predictable once users master them — engagement drops off. Products with <strong>infinite variability</strong> sustain novelty because the source of variability never runs out.</p>
+    <div class="finite-infinite">
+      <div class="fi-cell" style="background:#fff1f2; border: 1px solid #fecdd3;">
+        <h4 style="color:#be123c;">Finite Variability</h4>
+        <ul>
+          <li>Single-player video games</li>
+          <li>TV series (once watched)</li>
+          <li>FarmVille / Zynga games</li>
+        </ul>
+        <p style="margin-top:8px; font-size:0.85rem; color:#9f1239;">Must constantly produce new content or users leave.</p>
+      </div>
+      <div class="fi-cell" style="background:#f0fdf4; border: 1px solid #bbf7d0;">
+        <h4 style="color:#166534;">Infinite Variability</h4>
+        <ul>
+          <li>Multiplayer games (WoW)</li>
+          <li>Twitter, Facebook feeds</li>
+          <li>User-generated content platforms</li>
+        </ul>
+        <p style="margin-top:8px; font-size:0.85rem; color:#14532d;">Other users generate endless novelty — the product doesn't age.</p>
+      </div>
+    </div>
+    <div class="memory-hook">💡 Build systems where your users generate the variability for each other. Then you never run out of novelty.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The Autonomy Trap — "But You Are Free"</div>
+    <p>Variable rewards can backfire if users feel coerced. Psychological reactance — our hair-trigger resistance to being told what to do — kills engagement the moment users feel they <em>have</em> to use a product rather than <em>want</em> to. A French study found that adding "but you are free to accept or refuse" to a request <em>doubled</em> compliance. Products must feel like a choice, not an obligation.</p>
+    <div class="warning-box">⚠️ <strong>What not to do:</strong> Quora silently opted all users into a "Views" feature that exposed their browsing history. Users felt their autonomy was violated — backlash forced the feature to be rolled back within weeks.</div>
+    <div class="example">In practice: Fitocracy beats MyFitnessPal not because it's more accurate, but because it lets users do things they <em>want</em> to do (connect with gym friends) rather than things they <em>have</em> to do (log every calorie). Same goal; radically different retention.</div>
+    <div class="memory-hook">💡 The most powerful habit-forming products make users feel in control of a choice they'd make anyway. The product just makes it easier and more rewarding.</div>
+  </div>
+
+  <h2>Stories & Case Studies</h2>
+
+  <div class="story-card">
+    <strong>Zynga's FarmVille and the Finite Variability Collapse</strong>
+    <p>In 2009, FarmVille hit 83.8 million monthly users — a record that seemed unassailable. Zynga doubled down, releasing CityVille, ChefVille, FrontierVille — the same mechanics reskinned. By 2012 the stock had crashed 80%. The mistake was treating variability as a feature that could be cloned. But FarmVille's variability was finite: once players learned the patterns, the novelty evaporated and no amount of new "-Ville" skins could restore the original sense of discovery. Zynga had built a hit, not a habit. The lesson is brutal and clear: if your product's surprise runs out, so does your user base.</p>
+  </div>
+
+  <div class="story-card">
+    <strong>Mahalo vs. Quora: Getting the Reward Wrong</strong>
+    <p>Mahalo.com paid real money for answers to questions. Quora paid nothing. Mahalo peaked at 14 million monthly users and then cratered. Quora grew steadily and never looked back. Why? Mahalo's designers assumed money was the right variable reward. But users visiting a Q&A site aren't hunting for cash — they're seeking tribal recognition from peers they respect. Quora's upvote system delivered exactly that: variable, social, and tied to status within a community the user cares about. The reward matched the motivation. Mahalo's didn't. No amount of money can substitute for the right reward.</p>
+  </div>
+
+  <h2>Visual Breakdown</h2>
+  <div class="diagram-box">
+    <div class="diagram-title">Concept Diagram: The Variability Engine</div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
+      <div style="background:#4f46e5; color:#fff; padding:14px 28px; border-radius:8px 8px 0 0; width:100%; max-width:480px; text-align:center; font-weight:600;">User takes action (trigger → action)</div>
+      <div style="width:2px; height:16px; background:#c7d2fe;"></div>
+      <div style="background:#6366f1; color:#fff; padding:14px 28px; width:100%; max-width:480px; text-align:center; font-weight:600;">Reward arrives… or doesn't (variability)</div>
+      <div style="width:2px; height:16px; background:#c7d2fe;"></div>
+      <div style="background:#7c3aed; color:#fff; padding:14px 28px; width:100%; max-width:480px; text-align:center; font-weight:600;">Dopamine spikes in anticipation → craving increases</div>
+      <div style="width:2px; height:16px; background:#c7d2fe;"></div>
+      <div style="background:#1e1b4b; color:#fff; padding:14px 28px; border-radius:0 0 8px 8px; width:100%; max-width:480px; text-align:center; font-weight:600;">User returns to relieve the craving → habit deepens</div>
+    </div>
+    <p style="margin-top:14px; text-align:center; font-size:0.85rem; color:#6b7280;">The loop only sustains if: reward matches motivation + user feels autonomous</p>
+  </div>
+
+  <h2>Chapter Takeaways</h2>
+  <ul class="takeaways">
+    <li>Identify which reward type (Tribe, Hunt, or Self) your users actually crave — then deliver that one variably, not a substitute.</li>
+    <li>Build for infinite variability where possible: user-generated content and social interaction create novelty you never have to manufacture.</li>
+    <li>Never coerce users — if they feel forced to engage, reactance will kill retention faster than any competitor could.</li>
+    <li>Test reward timing: rewards should feel earned but unpredictable — too predictable and the dopamine loop breaks.</li>
+    <li>Gamification only works when it scratches a real itch — points and badges on a product users don't genuinely need will not create habits.</li>
+  </ul>
+
+  <h2>Apply This Week</h2>
+  <div class="action-box">
+    <p>▶ <strong>Action 1:</strong> Identify which of the three reward types (Tribe, Hunt, Self) your product currently delivers. Then ask: is this actually what your users are seeking, or is it what you assumed they wanted? If you're unsure, interview three users and ask what they feel when they get a positive outcome in your product.</p>
+    <p>▶ <strong>Action 2:</strong> Audit one key feature for finite vs. infinite variability. If it's finite (e.g. users can "complete" it), brainstorm one way to introduce user-generated content or social interaction that makes the experience feel fresh on every visit.</p>
+  </div>
+
+</div>
+</body>
+</html>

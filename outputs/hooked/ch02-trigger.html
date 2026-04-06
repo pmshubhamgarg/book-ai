@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooked — Chapter 2: Trigger</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #1a1a1a; line-height: 1.7; }
+  .nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 12px 24px; display: flex; gap: 16px; align-items: center; z-index: 100; font-size: 14px; color: #6b7280; }
+  .nav strong { color: #1a1a1a; }
+  .badge { padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; color: #fff; }
+  .badge-concept { background: #7c3aed; }
+  .badge-mixed { background: #d97706; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+  .book-label { font-size: 13px; color: #9ca3af; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  h1 { font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 12px; }
+  .meta { display: flex; gap: 12px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+  .reading-time { font-size: 13px; color: #9ca3af; }
+  h2 { font-size: 1.2rem; font-weight: 700; color: #1a1a1a; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  .big-idea { background: #f8f7ff; border-left: 4px solid #4f46e5; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 32px; font-size: 1.05rem; }
+  .concept-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .concept-name { font-weight: 700; color: #4f46e5; font-size: 1.05rem; margin-bottom: 10px; }
+  .analogy { background: #eff6ff; border-left: 3px solid #3b82f6; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; }
+  .example { background: #f0fdf4; border-left: 3px solid #22c55e; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.95rem; }
+  .memory-hook { background: #fefce8; border: 1px dashed #eab308; border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: #713f12; }
+  .story-card { background: #fff7ed; border-left: 4px solid #f97316; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 20px; }
+  .diagram-box { background: #f8f7ff; border: 1px solid #c7d2fe; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .diagram-title { font-weight: 700; color: #4f46e5; margin-bottom: 16px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: .05em; }
+  .trigger-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .trigger-cell { background: #fff; border: 1px solid #e0e7ff; border-radius: 8px; padding: 16px; }
+  .trigger-cell h4 { color: #4f46e5; font-size: 0.95rem; margin-bottom: 6px; }
+  .trigger-cell p { font-size: 0.88rem; color: #374151; }
+  .funnel { display: flex; flex-direction: column; gap: 0; align-items: center; margin-top: 8px; }
+  .funnel-step { width: 100%; max-width: 500px; text-align: center; padding: 12px; font-size: 0.9rem; font-weight: 600; color: #fff; }
+  .takeaways { list-style: none; }
+  .takeaways li { padding: 10px 0 10px 32px; position: relative; border-bottom: 1px solid #f3f4f6; font-size: 0.97rem; }
+  .takeaways li::before { content: "✓"; position: absolute; left: 0; color: #4f46e5; font-weight: 700; font-size: 1.1rem; }
+  .action-box { background: #f8f7ff; border: 2px solid #4f46e5; border-radius: 10px; padding: 24px; margin-top: 8px; }
+  .action-box p { margin-bottom: 10px; font-size: 0.97rem; }
+  .five-whys { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  .five-whys th { background: #4f46e5; color: #fff; padding: 10px 14px; text-align: left; }
+  .five-whys td { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; }
+  .five-whys tr:nth-child(even) td { background: #f8f7ff; }
+  .five-whys tr:last-child td { background: #fef9c3; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <strong>Hooked</strong>
+  <span>|</span>
+  <span>Chapter 2 of 4</span>
+  <span>|</span>
+  <span class="badge badge-concept">Concept-Heavy</span>
+</nav>
+
+<div class="wrap">
+
+  <div class="book-label">Hooked — Nir Eyal</div>
+  <h1>Chapter 2: Trigger</h1>
+  <div class="meta">
+    <span class="badge badge-concept">Concept-Heavy</span>
+    <span class="reading-time">⏱ ~10 min read</span>
+  </div>
+
+  <h2>The Big Idea</h2>
+  <div class="big-idea">
+    Every habit begins with a trigger — a cue that initiates behavior. Triggers come in two forms: external (cues in the environment) and internal (cues encoded in memory and emotion). The ultimate goal of any habit-forming product is to move users from needing external triggers to responding to internal ones, so that the product becomes the automatic go-to whenever a specific feeling arises.
+  </div>
+
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <div class="concept-name">External Triggers</div>
+    <p>External triggers are sensory cues in the user's environment that tell them what to do next. They carry embedded information — a button, a notification, a link — that points to a single clear action. The best external triggers reduce choice and friction to near zero.</p>
+    <div class="analogy">Think of it like: a road sign. It doesn't explain why you should turn — it just tells you to turn now.</div>
+    <div class="example">In practice: Mint.com's account-alert email reduces the entire page to one action: a large orange "Log In to Mint" button. Every other option is removed. One trigger, one action.</div>
+    <div class="memory-hook">💡 More choices = more hesitation. A trigger that points to one action is more powerful than a trigger pointing to five.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The 4 Types of External Triggers</div>
+    <p>Not all external triggers are equal. They sit on a spectrum from expensive-but-controllable to free-but-unpredictable:</p>
+    <div style="margin-top:12px;">
+      <div class="trigger-grid">
+        <div class="trigger-cell">
+          <h4>1. Paid Triggers</h4>
+          <p>Ads, SEM. Effective but costly. Unsustainable as a sole re-engagement strategy.</p>
+        </div>
+        <div class="trigger-cell">
+          <h4>2. Earned Triggers</h4>
+          <p>PR, viral videos, App Store features. Free but short-lived and unpredictable.</p>
+        </div>
+        <div class="trigger-cell">
+          <h4>3. Relationship Triggers</h4>
+          <p>Word-of-mouth, referrals, social sharing. Highly effective — can create viral hypergrowth.</p>
+        </div>
+        <div class="trigger-cell">
+          <h4>4. Owned Triggers</h4>
+          <p>Push notifications, app icons, email lists. User-consented. The engine of repeat engagement until internal triggers form.</p>
+        </div>
+      </div>
+    </div>
+    <div class="memory-hook">💡 Paid and earned get users in the door. Owned triggers keep them coming back. Internal triggers make them stay forever.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">Internal Triggers</div>
+    <p>Internal triggers are emotions — usually negative ones — stored in memory that prompt automatic behavior. When a product becomes tightly associated with relieving a specific feeling (boredom, loneliness, anxiety, FOMO), users reach for it without any external prompt. This is the brass ring of habit design.</p>
+    <div class="analogy">Think of it like: scratching an itch. You don't decide to scratch — the discomfort fires the action before conscious thought kicks in.</div>
+    <div class="example">In practice: Yin opens Instagram every time she fears a moment will be lost forever. She doesn't wait for a notification. The internal trigger — fear of loss — fires automatically.</div>
+    <div class="memory-hook">💡 The most powerful internal triggers are negative emotions: boredom → Twitter, loneliness → Facebook, uncertainty → Google. Build your product as the relief.</div>
+  </div>
+
+  <div class="concept-card">
+    <div class="concept-name">The 5 Whys Method (Finding the Real Trigger)</div>
+    <p>Users can't tell you their internal triggers because they don't consciously know them. The 5 Whys technique — borrowed from Toyota's manufacturing process — drills past declared preferences down to the emotional root cause. Ask "why?" five times about a user behavior. By the fifth answer, you'll have an emotion.</p>
+    <div class="example">In practice: See the Email example table below — starting from "send messages" and ending at "fear of being out of the loop." That fear is the internal trigger to design for.</div>
+    <div class="memory-hook">💡 People don't use products — they use products to feel something. Keep asking "why" until you hit a feeling.</div>
+  </div>
+
+  <h2>Visual Breakdown</h2>
+  <div class="diagram-box">
+    <div class="diagram-title">The 5 Whys — Email Case Study</div>
+    <table class="five-whys">
+      <thead>
+        <tr><th>Why #</th><th>Question</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Why would Julie use email?</td><td>To send and receive messages</td></tr>
+        <tr><td>2</td><td>Why send/receive messages?</td><td>To share and receive information quickly</td></tr>
+        <tr><td>3</td><td>Why does she need that?</td><td>To know what's going on with colleagues and friends</td></tr>
+        <tr><td>4</td><td>Why does she need to know that?</td><td>To know if someone needs her</td></tr>
+        <tr><td>5</td><td>Why does that matter?</td><td>💡 <strong>She fears being out of the loop</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="diagram-box">
+    <div class="diagram-title">Concept Diagram: External → Internal Trigger Journey</div>
+    <div class="funnel">
+      <div class="funnel-step" style="background:#6366f1; border-radius:8px 8px 0 0;">Paid / Earned Trigger → First awareness of product</div>
+      <div class="funnel-step" style="background:#7c3aed;">Relationship Trigger → First installation / signup</div>
+      <div class="funnel-step" style="background:#4f46e5;">Owned Trigger (notifications, icons) → Repeat visits</div>
+      <div class="funnel-step" style="background:#1e1b4b; border-radius:0 0 8px 8px;">Internal Trigger (emotion) → Automatic, unprompted use = HABIT</div>
+    </div>
+  </div>
+
+  <h2>Stories & Case Studies</h2>
+  <div class="story-card">
+    <strong>Instagram: From Pearl to Habit</strong>
+    <p>Yin, a Stanford student, doesn't think of herself as addicted to Instagram. She just uses it "whenever I see something cool." But what she's describing is a fully-formed internal trigger: the fear that a moment will disappear forever fires before she's consciously aware of it. Her habit started with an external trigger — a friend's recommendation — and was sustained through owned triggers like push notifications and the app icon on her home screen. Over months of repetition, the external scaffolding became unnecessary. The internal trigger — fear of missing out — does all the work now. Instagram didn't just build an app; it colonized an emotion.</p>
+  </div>
+
+  <h2>Chapter Takeaways</h2>
+  <ul class="takeaways">
+    <li>Design owned triggers first — notifications, emails, icons — to drive repeat engagement until internal triggers form.</li>
+    <li>Run the 5 Whys on your target user to uncover the emotional root cause behind their behavior.</li>
+    <li>Reduce every external trigger to a single, unmistakable call to action — eliminate competing options.</li>
+    <li>Target negative emotions as internal triggers: they fire more frequently and urgently than positive ones.</li>
+    <li>Write a user narrative: "Every time the user feels [emotion], they [first action]." If you can't complete it, keep researching.</li>
+  </ul>
+
+  <h2>Apply This Week</h2>
+  <div class="action-box">
+    <p>▶ <strong>Action 1:</strong> Pick one user persona for your product and run the full 5 Whys on their primary behavior. Write each answer down. The emotion you land on at Why #5 is your internal trigger — design your product to relieve that specific feeling.</p>
+    <p>▶ <strong>Action 2:</strong> Audit your current external triggers. For each one, count how many actions the user could take. If it's more than one, simplify. A good trigger leaves exactly one obvious next step.</p>
+  </div>
+
+</div>
+</body>
+</html>
