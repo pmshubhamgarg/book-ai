@@ -1,0 +1,18 @@
+# Book files — never commit these (copyright)
+books/*.pdf
+books/*.docx
+books/*.doc
+books/*.txt
+books/*.epub
+
+# Keep the folder itself
+!books/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# OS
+.DS_Store
+Thumbs.db

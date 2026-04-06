@@ -107,11 +107,12 @@ A) outputs/<book-slug>/index.html — the book index
    - Link to meta-summary.html
    - Link back to the parent index
 
-B) outputs/index.html — the master index (all books)
+B) index.html (at the project ROOT, not inside outputs/) — the master index (all books)
    - A card for every book folder in outputs/
    - Show: book title, number of chapters summarized, date last updated
-   - Each card links to that book's index.html
+   - Each card links to outputs/<book-slug>/index.html
    - Keep it clean and scannable — this is the home page of your whole library
+   - This is what opens at https://pmshubhamgarg.github.io/book-ai/
 
 INCREMENTAL CHAPTER RULES (important — follow strictly):
 - When the user asks for additional chapters of a book already started (e.g. "now do chapters 5-8"):
