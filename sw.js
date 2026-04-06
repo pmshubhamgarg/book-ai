@@ -1,6 +1,6 @@
-const CACHE = 'book-ai-v1';
+const CACHE = 'book-ai-v2';
 
-const ASSETS = [
+const PRECACHE = [
   '/book-ai/',
   '/book-ai/index.html',
   '/book-ai/shared.js',
@@ -14,14 +14,16 @@ const ASSETS = [
   '/book-ai/outputs/hooked/meta-summary.html',
 ];
 
-// Pre-cache all assets on install
+// Pre-cache everything on install
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE)
+      .then(c => c.addAll(PRECACHE))
+      .then(() => self.skipWaiting())
   );
 });
 
-// Clean up old caches on activate
+// Delete old caches on activate
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys()
@@ -30,19 +32,43 @@ self.addEventListener('activate', e => {
   );
 });
 
-// Cache-first, falling back to network — then cache new responses
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(response => {
-        if (response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE).then(c => c.put(e.request, copy));
-        }
-        return response;
-      }).catch(() => cached);
-    })
-  );
+
+  const url = new URL(e.request.url);
+  const isHTML = url.pathname.endsWith('.html')
+               || url.pathname.endsWith('/')
+               || url.pathname === '/book-ai';
+
+  if (isHTML) {
+    // ── NETWORK FIRST for HTML pages ──────────────────────────────
+    // Always try to get the freshest version. Fall back to cache only
+    // if the user is truly offline.
+    e.respondWith(
+      fetch(e.request, { cache: 'no-cache' })
+        .then(response => {
+          if (response.ok) {
+            caches.open(CACHE).then(c => c.put(e.request, response.clone()));
+          }
+          return response;
+        })
+        .catch(() => caches.match(e.request))
+    );
+  } else {
+    // ── CACHE FIRST for JS / images / assets ──────────────────────
+    // Serve instantly from cache, but silently refresh in background
+    // so the next visit gets the latest version.
+    e.respondWith(
+      caches.match(e.request).then(cached => {
+        const networkFetch = fetch(e.request).then(response => {
+          if (response.ok) {
+            caches.open(CACHE).then(c => c.put(e.request, response.clone()));
+          }
+          return response;
+        }).catch(() => cached);
+
+        return cached || networkFetch;
+      })
+    );
+  }
 });
